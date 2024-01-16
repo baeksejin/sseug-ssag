@@ -1,0 +1,64 @@
+package com.s4.personal.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.s4.personal.dto.AccountPDto;
+import com.s4.personal.service.AccountPService;
+
+@Controller 
+@RequestMapping(path= {"/personal/account"})
+public class AccountPController {
+
+    @Autowired
+    private AccountPService accountPService;
+    
+    // 회원가입 창띄우기
+    @GetMapping(path = {"/register"})
+    public String registerForm(@ModelAttribute("accountP") AccountPDto accountP) {
+    	return "/personal/account/register";
+    }
+
+    // 회원가입 등록
+    @PostMapping(path = {"/register"}) 
+    public String register(@ModelAttribute("accountP") AccountPDto accountP) { 
+    	accountPService.register(accountP); // pmemberService 빈을 통해 호출
+    	
+    	return "home";
+        //return "redirect:/account/login";
+    } 
+    
+    // 로그인하기
+    @PostMapping(path = {"/login"})
+    	public String login(AccountPDto accountP, HttpSession session, Model model) {
+    	
+    	 AccountPDto loginAccountP = accountPService.login(accountP); 
+    	 
+    	 if(loginAccountP != null) {
+    		 session.setAttribute("loginPUser", loginAccountP);	 
+    		 return "redirect:/home";
+    		 
+    	 } else { 
+    		 model.addAttribute("loginFail", true);
+    		 return "/common/errorPage";
+    	 } 	
+	} 
+    
+    @GetMapping(path={"/logout"})
+    public String logout(HttpSession session) {
+    	session.removeAttribute("loginPUser");
+    	return "redirect:/home";
+    }
+}
+
+
+
+

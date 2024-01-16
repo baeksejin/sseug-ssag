@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.s4.personal.dao.AccountPDao">
+
+    <insert id="insertAccountP" parameterType="AccountPDto">
+        <!-- mapper의 메서드명 -->
+        INSERT INTO p_member (p_id, p_pw, p_name, p_nickname, p_email, p_phone)
+        VALUES (#{p_id}, #{p_pw}, #{p_name}, #{p_nickname}, #{p_email}, #{p_phone})
+    </insert>
+    
+   <select id="selectAccountPByIdAndPw" resultType="AccountPDto" parameterType="AccountPDto">
+	    select * from p_member where p_id = #{p_id} and p_pw = #{p_pw}
+	</select>  
+	
+	<update id="updateMyProfile" resul="AccountPDto" parameterType="AccountPDto">
+		UPDATE p_member
+	    SET p_pw = #{p_pw}, p_name = #{p_name}, p_nickname = #{p_nickname}, 
+   			p_email = #{p_email}, p_phone = #{p_phone}
+	    WHERE p_id = #{p_id}
+	</update>
+
+</mapper>

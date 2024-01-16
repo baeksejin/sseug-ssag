@@ -1,0 +1,14 @@
+1704187721425	Rename resource 'servlet-context.xml'
+1704187815596	Move 'root-context.xml' to 'spring'
+1704187846599	Move 'servelt-context.xml' to 'spring'
+1704188127059	Rename type 'P_MemberDto'
+1704188466330	Rename type 'P_MemberController'
+1704188559504	Rename type 'P_MemberMapper'
+1704188706615	Rename type 'P_MemberService'
+1704191370050	Rename resource 'servelt-context.xml'
+1704274757998	Rename resource 'AccountPMapper..xml'
+1704276414383	Rename resource 'AccountPMapper.xml'
+1704276496592	Rename resource 'Mapper.xml'
+1704276599118	Rename resource 'AccountpPMapper.xml'
+1704277531302	Delete element
+1704364452597	Delete elements

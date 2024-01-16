@@ -1,0 +1,16 @@
+1704795854588	Rename resource 'mypage.jsp'
+1704795857150	Move 'profile.jsp' to 'mypage'
+1704798618256	Copy file
+1704800343152	Move 2 resources to 'personal'
+1704966274829	Rename package 'com.s4'
+1704966442589	Rename package 'com.s4.member'
+1704966639780	Rename package 'com.s4.enterprise.controller'
+1704966682921	Rename package 'com.s4.personal.mapper'
+1704966832926	Move compilation unit
+1704968253322	Delete element
+1704968787033	Rename resource 'mypage'
+1704968861402	Copy compilation unit
+1704968877264	Delete element
+1704972748922	Delete element
+1704973884164	Rename resource 'login.jsp'
+1704973893990	Rename resource 'loginFrm.jsp'

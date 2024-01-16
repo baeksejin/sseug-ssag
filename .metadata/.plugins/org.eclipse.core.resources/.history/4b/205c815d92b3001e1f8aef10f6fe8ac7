@@ -1,0 +1,64 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>register</title>
+<style> 
+	h2 {
+		background-color:lightyellow;
+	}
+</style>
+</head>
+<body>
+	<h2 align="center">마이페이지수정</h2>
+	<c:set var="show" value="${loginPUser}" />
+	
+	<form:form method="post" action="profileEdit">
+		<table align="center">
+			<tr>
+				<td>ID</td>
+				<td><input id="p_memberId" name="p_id" value="${show.p_id}" readonly /></td>
+			</tr>
+			<tr>
+				<td>PW</td>
+				<td><input id="p_memberPw" name="p_pw" type="password" value="${show.p_pw}" readonly /></td>
+			</tr> 
+			<tr>
+				<td>NAME</td>
+				<td><input id="p_memberName" name="p_name" value="${show.p_name}" readonly /></td>
+			</tr> 
+			<tr>
+				<td>NICKNAME</td>
+				<td><input id="p_memberNickname" name="p_nickname" value="${show.p_nickname}" readonly /></td>
+			</tr> 
+			<tr>
+				<td>EMAIL</td>
+				<td><input id="p_memberEmail" name="p_email" type="email" value="${show.p_email}" readonly /></td>
+			</tr>  
+			<tr>
+				<td>PHONE</td>
+				<td><input id="p_memberPhone" name="p_phone" value="${show.p_phone}" readonly /></td>
+			</tr>  
+			<tr>
+			    <td>가입일</td>
+			    <td>
+			        <fmt:formatDate pattern="yyyy-MM-dd" value="${show.p_regdate}" var="Date" />
+			        <input id="p_regdate" name="p_regdate" value="${Date}" readonly />
+			    </td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center" style="padding-top:10px;">
+					<input type="button" value="내정보수정" onclick="/sseug-ssag/mypage/profileEdit">&emsp;
+					<input type="button" value="회원탈퇴" onclick="/sseug-ssag/mypage/bye">
+				</td> 
+			</tr>
+		</table>
+	</form:form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+package com.s4.member.service;
+
+import com.s4.member.dto.AccountPDto;
+
+public interface AccountPService {
+
+	public void register(AccountPDto accountP); 
+
+	public AccountPDto login(AccountPDto accountP); 
+
+
+}

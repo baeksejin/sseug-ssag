@@ -1,0 +1,15 @@
+package com.s4.member.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.s4.personal.dto.AccountPDto;
+
+@Mapper
+public interface AccountPMapper { 
+
+	void insertAccountP(AccountPDto accountP);
+
+	AccountPDto selectAccountP(@Param("p_id") String p_id, @Param("p_pw") String p_pw);
+
+}

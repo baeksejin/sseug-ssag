@@ -1,0 +1,60 @@
+package com.s4.personal.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.s4.personal.dto.AccountPDto;
+import com.s4.personal.service.AccountPService;
+
+@Controller
+@RequestMapping(path= {"/personal/myPage"})
+public class MyPageController {
+	
+	@Autowired
+    private AccountPService accountPService;
+	
+	// 마이페이지 창띄우기
+    @GetMapping(path = {"/profile"})
+    public String profileForm(HttpSession session) { 
+    	
+    	 AccountPDto loginPUser = (AccountPDto)session.getAttribute("loginPUser");
+    	 												// 일반객체로 가지고 와서 DTO로 형변환
+			  if (loginPUser == null) { return "redirect:/personal/account/login"; }
+			 
+        return "/personal/myPage/profile";
+    } 
+    
+    	// 마이페이지 수정창띄우기
+        @GetMapping(path = {"/profileEdit"})
+        public String editProfileForm(HttpSession session) { 
+        	
+        	 AccountPDto loginPUser = (AccountPDto)session.getAttribute("loginPUser");
+        										// 일반객체로 가지고 와서 DTO로 형변환
+        	    if (loginPUser == null) {
+        	        return "redirect:/personal/account/login";
+        	    } 
+        	    
+            return "personal/myPage/profileEdit";
+        }
+        
+        // 마이페이지 수정하기
+        @PostMapping(path = {"/profileEdit"})
+        public String editProfile(HttpSession session, AccountPDto accountP) {
+        	accountPService.editProfile(accountP);
+        	
+        	AccountPDto loginPUser = (AccountPDto)session.getAttribute("loginPUser");
+        	
+        	
+        	
+        	if (loginPUser == null) {
+    	        return "redirect:/personal/account/login";
+    	    } 
+     
+        	return "redirect:/personal/myPage/profile"; 
+        }
+    }
